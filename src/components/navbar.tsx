@@ -1,14 +1,40 @@
-import  { useState } from 'react';
+import  { useState, useEffect, useRef } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
+
   // State for controlling the mobile menu's open/close status
   const [isOpen, setIsOpen] = useState(false);
+
+  // State for navbar visibility
+  const [showNavbar, setShowNavbar] = useState(true);
+  const scrollTimeout = useRef<number | null>(null);
+  const lastScrollY = useRef(window.scrollY);
 
   // Toggle function for the mobile menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // Hide navbar on scroll, show when scrolling stops
+  useEffect(() => {
+    const handleScroll = () => {
+      // Hide navbar when scrolling
+      setShowNavbar(false);
+      // Clear previous timer
+  if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      // Show navbar after 200ms of no scroll
+      scrollTimeout.current = window.setTimeout(() => {
+        setShowNavbar(true);
+      }, 200);
+      lastScrollY.current = window.scrollY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    };
+  }, []);
 
   // Common styles for the navigation links
   const navLinkStyle = "text-white text-lg font-normal hover:text-gray-300 transition duration-300 cursor-pointer";
@@ -23,7 +49,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-[#8A817C] shadow-lg sticky top-0 z-50">
+    <nav
+      className={`bg-[#8A817C] shadow-lg sticky top-0 z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}
+      style={{ willChange: 'transform' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-32"> {/* Increased height for visual match */}
           
