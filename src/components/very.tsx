@@ -24,7 +24,8 @@ const Testimonial = () => {
         <div className="mt-6 text-center">
           <h2 className="text-6xl  font-semibold text-[#8f867e]">Happy Client</h2>
           <p className="mt-3 text-gray-700 max-w-7xl mx-auto text-base md:text-lg">
-           "Susan was integral to our Kitchen remodel project. She was able to draw the best design given our current space, source our cabinetry, as well as provide excellent interior design. We came to her with little more than the overall vibe we were going for (colors and materials that we knew we liked) and she helped us hone in on our vision. She also held our hand throughout every step of the process to ensure that our design was being executed faithfully. I couldn’t recommend her more if you are looking to remodel or design a new home."
+           "Susan was integral to our Kitchen remodel project. She was able to draw the best design given our current space, source our cabinetry, as well as provide excellent interior design. We came to her with little more than the overall vibe we were going for (colors and materials that we knew we liked) and she helped us hone in on our vision. She also held our hand throughout every step of the process to ensure that our design was being executed faithfully.
+           "
           </p>
           <h2 className="text-3xl  mt-8 font-semibold text-[#8f867e]">~ Cameron Maynard</h2>
         </div>
