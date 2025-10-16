@@ -1,136 +1,249 @@
-import  { useState, useEffect, useRef } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { FaBars, FaTimes, FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+// --- Type Definitions ---
+interface LinkType {
+  name: string;
+  href: string;
+  isMain: boolean; // Indicates if it's a top-level link (used for mobile styling)
+}
 
-  // State for controlling the mobile menu's open/close status
-  const [isOpen, setIsOpen] = useState(false);
+type MobileDrawerProps = {
+  isOpen: boolean;
+  toggleMenu: () => void;
+  mobileLinks: LinkType[];
+};
 
-  // State for navbar visibility
-  const [showNavbar, setShowNavbar] = useState(true);
-  const scrollTimeout = useRef<number | null>(null);
-  const lastScrollY = useRef(window.scrollY);
+// --- Data for navigation and dropdown ---
+const navLinks: LinkType[] = [
+  { name: 'Home', href: '#home', isMain: true },
+  { name: 'Gallery', href: '#gallery', isMain: true },
+  { name: 'Construction Drawings', href: '#drawings', isMain: true },
+  { name: 'Contact', href: '#contact', isMain: true },
+];
 
-  // Toggle function for the mobile menu
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+const designServicesLinks: LinkType[] = [
+  { name: 'Kitchen Design', href: '#kitchen', isMain: false },
+  { name: 'Bathroom Design', href: '#bathroom', isMain: false },
+  { name: 'Aging in Place', href: '#aging-in-place', isMain: false },
+];
 
-  // Hide navbar on scroll, show when scrolling stops
-  useEffect(() => {
-    const handleScroll = () => {
-      // Hide navbar when scrolling
-      setShowNavbar(false);
-      // Clear previous timer
-  if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-      // Show navbar after 200ms of no scroll
-      scrollTimeout.current = window.setTimeout(() => {
-        setShowNavbar(true);
-      }, 200);
-      lastScrollY.current = window.scrollY;
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-    };
-  }, []);
-
-  // Common styles for the navigation links
-  const navLinkStyle = "text-white text-lg font-normal hover:text-gray-300 transition duration-300 cursor-pointer";
-
-  // Navigation data
-  const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Design Services', href: '#' },
-    { name: 'Gallery', href: '#' },
-    { name: 'Construction Drawings', href: '#' },
-    { name: 'Contact', href: '#' },
-  ];
-
+// --- Sub-Component: The Full-Screen Mobile Drawer ---
+const MobileDrawer = ({ isOpen, toggleMenu, mobileLinks }: MobileDrawerProps) => {
   return (
-    <nav
-      className={`bg-[#8A817C] shadow-lg sticky top-0 z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}
-      style={{ willChange: 'transform' }}
+    <div
+      className={`fixed inset-0 z-50 transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      style={{
+        backgroundColor: 'rgba(25, 25, 25, 0.98)', // Near black, high contrast
+        backdropFilter: 'blur(8px)',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-32"> {/* Increased height for visual match */}
-          
-          {/* Logo Section */}
-          <div className="flex items-center">
-            <div className="text-white text-2xl font-script leading-tight">
-              {/* This attempts to visually recreate the 'Design Alternatives' logo text */}
-              <div className="text-4xl italic font-serif" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)', letterSpacing: '1px', lineHeight: '1.2' }}>
-                Design Alternatives
-              </div>
-              <div className="text-sm uppercase tracking-widest border-t border-b border-white border-opacity-50 py-1 mt-[-8px]">
-                KITCHEN & BATH DESIGN
-              </div>
-              <div className="text-xs italic tracking-wider mt-1">
-                With Aging in Place in Mind!
-              </div>
-            </div>
-          </div>
-
-          {/* Desktop Nav Links & Appointments Button */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {/* Main Links */}
-            {navLinks.map((link) => (
-              // Note: Design Services is a dropdown in the image, here it's simplified as a link.
-              <a key={link.name} href={link.href} className={navLinkStyle}>
-                {link.name} {link.name === 'Design Services' && '▼'} 
-              </a>
-            ))}
-
-            {/* Appointments Button */}
-            <button
-              className="bg-[#2D3748] text-white text-lg font-semibold py-3 px-8 rounded-lg transition duration-300 hover:bg-[#3A475C] shadow-lg"
-              aria-label="Book an Appointment"
-            >
-              Appointments
-            </button>
-          </div>
-
-          {/* Mobile Menu Button (Hamburger/Close Icon) */}
-          <div className="flex lg:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-white hover:text-gray-300 focus:outline-none"
-              aria-label="Toggle navigation menu"
-            >
-              {/* Use FaTimes (X) when menu is open, FaBars (Hamburger) when closed */}
-              {isOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
-            </button>
-          </div>
-
-        </div>
+      <div className="absolute top-0 right-0 p-8">
+        <button
+          onClick={toggleMenu}
+          className="text-amber-300 p-2 rounded-lg hover:bg-white/10 focus:outline-none transition-colors"
+          aria-label="Close navigation menu"
+        >
+          <FaTimes className="h-10 w-10" />
+        </button>
       </div>
 
-      {/* Mobile Menu Panel */}
-      <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'} bg-[#8A817C]`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {/* Mobile Links */}
-          {navLinks.map((link) => (
+      <div className="flex flex-col h-full items-start justify-center p-10 space-y-2">
+        {/* Main Links */}
+        {mobileLinks.filter(l => l.isMain).map((link) => (
+          <a
+            key={link.name}
+            href={link.href}
+            className="text-6xl text-white font-serif italic hover:text-amber-400 transition duration-400 leading-tight tracking-tighter"
+            onClick={toggleMenu}
+          >
+            {link.name}
+          </a>
+        ))}
+        
+        {/* Sub-Links (Design Services) */}
+        <div className="pt-8 pl-4 space-y-1">
+          <div className="text-sm uppercase tracking-widest text-gray-400 pb-2 border-b border-gray-700">Design Services</div>
+          {designServicesLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 hover:text-white transition duration-300"
-              onClick={toggleMenu} // Close menu when a link is clicked
+              className="block text-2xl text-gray-300 font-sans hover:text-amber-400 transition duration-300"
+              onClick={toggleMenu}
             >
-              {link.name}
+              — {link.name}
             </a>
           ))}
-
-          {/* Mobile Appointments Button */}
-          <button
-            className="w-full mt-2 bg-[#2D3748] text-white text-base font-semibold py-2 px-4 rounded-md transition duration-300 hover:bg-[#3A475C]"
-            onClick={toggleMenu} // Close menu after 'Appointments' is clicked
-          >
-            Appointments
-          </button>
         </div>
+        
+        {/* CTA Button */}
+        <Link to={'/appointment'} 
+          className="mt-12 w-full text-center bg-amber-600 text-stone-900 text-2xl font-bold py-4 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest"
+          onClick={toggleMenu}
+        >
+          Book Appointment
+        </Link>
       </div>
-    </nav>
+    </div>
+  );
+};
+
+
+// --- Main Navbar Component ---
+const Navbar = () => {
+  // State
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // Renamed 'isHovering' state to 'isNavHovering' for clarity within the component scope
+  const [isNavHovering, setIsNavHovering] = useState(false); 
+
+  // useRef with type for the dropdown wrapper div
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Handlers
+  const toggleMobileMenu = useCallback(() => setIsMobileOpen(prev => !prev), []);
+  const toggleDropdown = useCallback(() => setIsDropdownOpen(prev => !prev), []);
+  const closeDropdown = useCallback(() => setIsDropdownOpen(false), []);
+  
+  // Combine all main links for the mobile drawer (Design Services are handled separately in the drawer component)
+  const allMobileLinks: LinkType[] = [...navLinks];
+
+  // Effect 1: Handle scroll behavior (Fade and size change)
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 5); // Low threshold for immediate effect
+      // Close dropdown when scrolling starts
+      if (window.scrollY > 0) {
+        setIsDropdownOpen(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Effect 2: Close dropdown on outside click
+  useEffect(() => {
+    // Defined a specific type for the mouse event to ensure target is a Node
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+  
+  // Dynamic Styles
+  const bgColorClass = isScrolled || isNavHovering || isDropdownOpen 
+    ? 'bg-stone-900/90 shadow-2xl backdrop-blur-sm' 
+    : 'bg-black/70';
+    
+  const heightClass = isScrolled ? 'h-24' : 'h-36';
+  const logoSizeClass = isScrolled ? 'text-4xl' : 'text-5xl';
+
+  // Nav link style calculation - text color adjusts based on state
+  const navLinkStyle = `font-light tracking-widest uppercase text-sm transition duration-300 ` +
+    ((isScrolled || isNavHovering || isDropdownOpen)
+      ? 'text-white hover:text-amber-400'
+      // When at the top and not hovering, links are black
+      : 'text-white hover:text-white');
+
+  return (
+    <>
+      <nav
+        className={`fixed top-0 w-full z-40 transition-all ease-in-out duration-500 ${bgColorClass} ${heightClass}`}
+        onMouseEnter={() => setIsNavHovering(true)}
+        onMouseLeave={() => setIsNavHovering(false)}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
+          
+          {/* Logo Section - The primary anchor */}
+          <a href="#" className="text-white leading-none flex flex-col group py-3 transition-all duration-300" aria-label="Design Alternatives Home">
+            <div className={`italic font-serif tracking-tight transition-all duration-500 ${logoSizeClass}`} style={{ textShadow: '0 0 5px rgba(0,0,0,0.7)' }}>
+              DesignHeaven
+            </div>
+            <div className={`text-xs uppercase tracking-[.4em] border-t border-b border-white border-opacity-70 py-0.5 mt-[-4px] group-hover:border-amber-400 transition-colors duration-500 ${isScrolled ? 'text-[10px]' : 'text-xs'}`}>
+              KITCHEN & BATH DESIGN
+            </div>
+          </a>
+
+          {/* Desktop Nav Links & CTA */}
+          <div className="hidden lg:flex items-center space-x-10">
+            
+            {/* Design Services Dropdown - Minimalist and direct */}
+            <div className="relative h-full flex items-center" ref={dropdownRef}>
+              <button
+                onClick={toggleDropdown}
+                className={`${navLinkStyle} flex items-center gap-1.5 focus:outline-none`}
+                aria-expanded={isDropdownOpen}
+                aria-controls="design-menu"
+              >
+                Design Services
+                {isDropdownOpen ? <FaAngleUp className="w-3 h-3 text-amber-400" /> : <FaAngleDown className="w-3 h-3" />}
+              </button>
+
+              {isDropdownOpen && (
+                <div
+                  id="design-menu"
+                  // z-50 ensures dropdown is above the rest of the content (except the mobile drawer)
+                  className="absolute top-full mt-0 pt-4 w-56 z-50 rounded-none shadow-2xl bg-stone-900/95 ring-1 ring-gray-700 overflow-hidden"
+                  role="menu"
+                >
+                  {designServicesLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="block px-5 py-3 text-sm text-gray-200 font-medium hover:bg-stone-800 transition duration-200 border-l-4 border-transparent hover:border-amber-500"
+                      role="menuitem"
+                      onClick={closeDropdown}
+                    >
+                      {link.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Other Main Links */}
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} className={navLinkStyle}>
+                {link.name}
+              </a>
+            ))}
+          
+            {/* CTA Button - Primary Focus */}
+            <Link
+              to={'/appointment'}
+              className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105"
+              aria-label="Book an Appointment"
+            >
+              Appointment
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button - The only visible element on mobile */}
+          <div className="lg:hidden z-50">
+            <button
+              onClick={toggleMobileMenu}
+              className="text-white p-2 rounded-lg hover:text-amber-400 focus:outline-none transition-colors"
+              aria-label="Open navigation menu"
+              aria-expanded={isMobileOpen}
+            >
+              <FaBars className="h-8 w-8" />
+            </button>
+          </div>
+        </div>
+      </nav>
+      
+      {/* The Full-Screen Drawer Renders here */}
+      <MobileDrawer 
+        isOpen={isMobileOpen} 
+        toggleMenu={toggleMobileMenu} 
+        mobileLinks={allMobileLinks}
+      />
+    </>
   );
 };
 

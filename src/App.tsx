@@ -1,26 +1,27 @@
 import { Routes, Route } from "react-router-dom";
-
-import Navbar from "./components/navbar";
 import LandingPage from "./pages/landingPage";
+import About from "./pages/about";
+import Services from "./pages/services";
+import Contact from "./pages/contact";
+import AppointmentPage from "./pages/appointment";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import "./App.css";
 
-const App = () => {
-  
-
+function App() {
   return (
     <>
       <Navbar />
-      <div>
-        {/* Display the inputText value */}
-      
-      </div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-       
-
-        {/* Add more routes as needed */}
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/appointment" element={<AppointmentPage />} />
       </Routes>
+      <Footer />
     </>
   );
-};
+}
 
 export default App;
