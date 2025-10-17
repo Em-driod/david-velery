@@ -19,7 +19,7 @@ const navLinks: LinkType[] = [
   { name: 'Home', href: '/', isMain: true },
   { name: 'Gallery', href: '/gallery', isMain: true },
   { name: 'Construction Drawings', href: '/construction', isMain: true },
-  { name: 'Contact', href: '/appointment', isMain: true },
+  { name: 'Appointment', href: '/appointment', isMain: true },
 ];
 
 const designServicesLinks: LinkType[] = [
