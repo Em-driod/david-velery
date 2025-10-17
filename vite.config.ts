@@ -6,6 +6,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server:{
-    historyApiFallback:true
+    // historyApiFallback:true // <-- This line was removed to fix the error.
   }
 })
