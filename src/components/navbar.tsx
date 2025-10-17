@@ -111,7 +111,7 @@ const MobileDrawer = ({ isOpen, toggleMenu }: MobileDrawerProps) => {
             onClick={toggleMenu}
             className="block mx-auto w-full max-w-xs bg-amber-600 text-stone-900 text-lg font-bold py-3.5 rounded-full transition duration-300 hover:bg-amber-500 shadow-lg uppercase tracking-widest transform hover:scale-105"
           >
-            Book Appointment
+             Appointment
           </a>
         </div>
       </div>
