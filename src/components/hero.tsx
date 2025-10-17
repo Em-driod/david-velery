@@ -19,7 +19,7 @@ const Hero = () => {
         >
           
           {/* Main Heading - Added text-center to align text inside the box */}
-          <h1 className="text-black text-4xl md:text-5xl font-serif leading-tight mb-4 tracking-tight text-center" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}>
+          <h1 className="text-white text-4xl md:text-5xl font-serif leading-tight mb-4 tracking-tight text-center" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}>
             Tailored Design, <br />
             Seamless Navigation
             
