@@ -29,7 +29,7 @@ const designServicesLinks: LinkType[] = [
   { name: 'Aging in Place', href: '#aging-in-place', isMain: false },
 ];
 
-// --- Sub-Component: The Full-Screen Mobile Drawer (UPDATED) ---
+// --- Sub-Component: The Full-Screen Mobile Drawer (REDUCED & SLICKER) ---
 const MobileDrawer = ({ isOpen, toggleMenu }: MobileDrawerProps) => {
   return (
     <div
@@ -39,28 +39,29 @@ const MobileDrawer = ({ isOpen, toggleMenu }: MobileDrawerProps) => {
         backdropFilter: 'blur(8px)',
       }}
     >
-      {/* Close Button */}
+      {/* Close Button - Minimal and High Contrast */}
       <div className="absolute top-0 right-0 p-6 sm:p-8">
         <button
           onClick={toggleMenu}
-          className="text-amber-300 p-2 rounded-lg hover:bg-white/10 focus:outline-none transition-colors"
+          className="text-amber-400 p-2 focus:outline-none transition-colors"
           aria-label="Close navigation menu"
         >
-          {/* Reduced size for a cleaner look */}
-          <FaTimes className="h-8 w-8 sm:h-10 sm:w-10" /> 
+          {/* Smaller, slicker icon size */}
+          <FaTimes className="h-7 w-7" /> 
         </button>
       </div>
 
-      {/* Content Container */}
-      <div className="flex flex-col h-full items-start justify-center p-8 sm:p-12 space-y-6">
+      {/* Content Container - Centered and Clean */}
+      <div className="flex flex-col h-full items-start justify-center p-8 sm:p-12 space-y-10">
         
-        {/* Main Links (Refined typography and spacing) */}
-        <div className='flex flex-col space-y-1'>
+        {/* Main Links - Reduced Font Size for Elegance */}
+        <div className='flex flex-col space-y-3'>
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.href}
-              className="text-5xl text-white font-serif italic hover:text-amber-400 transition duration-400 leading-snug tracking-tighter"
+              // Reduced size to text-4xl, using leading-none for tight vertical spacing
+              className="text-4xl text-white font-serif italic hover:text-amber-400 transition duration-300 leading-none tracking-tight"
               onClick={toggleMenu}
             >
               {link.name}
@@ -68,31 +69,31 @@ const MobileDrawer = ({ isOpen, toggleMenu }: MobileDrawerProps) => {
           ))}
         </div>
         
-        {/* Sub-Links (Design Services) (Refined spacing and border) */}
-        <div className="pt-8 pl-0 space-y-2 w-full max-w-sm">
-          <div className="text-base uppercase tracking-widest text-gray-400 pb-3 border-b border-gray-700 font-sans font-medium">
+        {/* Sub-Links (Design Services) - Clearer Separation */}
+        <div className="pt-4 pl-0 space-y-2 w-full max-w-sm">
+          <div className="text-sm uppercase tracking-[0.2em] text-amber-400 pb-2 border-b border-gray-700 font-sans font-medium">
             Design Services
           </div>
           {designServicesLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="block text-xl text-gray-300 font-sans font-light pl-4 hover:text-amber-400 transition duration-300"
+              // Smaller sub-links for hierarchy
+              className="block text-lg text-gray-300 font-sans font-light pl-2 hover:text-white transition duration-200"
               onClick={toggleMenu}
             >
-              {link.name}
+              — {link.name}
             </a>
           ))}
         </div>
         
-        {/* CTA Button (Increased margin for separation) */}
-        {/* Using a regular anchor for a phone number link - a common mobile CTA */}
+        {/* CTA Button - Simple and Prominent */}
         <a 
           href="tel:07016969298"
-          className="mt-12 w-full max-w-sm text-center bg-amber-600 text-stone-900 text-xl font-bold py-4 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest"
+          className="mt-10 w-full max-w-sm text-center bg-amber-600 text-stone-900 text-lg font-bold py-3.5 rounded-full transition duration-300 hover:bg-amber-500 shadow-lg uppercase tracking-wider"
           onClick={toggleMenu}
         >
-          Call for Appointment
+          Book Appointment
         </a>
       </div>
     </div>
@@ -100,7 +101,7 @@ const MobileDrawer = ({ isOpen, toggleMenu }: MobileDrawerProps) => {
 };
 
 
-// --- Main Navbar Component ---
+// --- Main Navbar Component (UNCHANGED) ---
 const Navbar = () => {
   // State
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -116,8 +117,6 @@ const Navbar = () => {
   const toggleDropdown = useCallback(() => setIsDropdownOpen(prev => !prev), []);
   const closeDropdown = useCallback(() => setIsDropdownOpen(false), []);
   
-  // NOTE: allMobileLinks is no longer needed for the Drawer, but keeping the original navLinks structure for desktop/data.
-
   // Effect 1: Handle scroll behavior (Fade and size change)
   useEffect(() => {
     const handleScroll = () => {
@@ -246,11 +245,10 @@ const Navbar = () => {
         </div>
       </nav>
       
-      {/* The Full-Screen Drawer Renders here (UPDATED CALL) */}
+      {/* The Full-Screen Drawer Renders here */}
       <MobileDrawer 
         isOpen={isMobileOpen} 
         toggleMenu={toggleMobileMenu} 
-        // NOTE: mobileLinks prop is removed from the call as the drawer imports data directly
       />
     </>
   );
