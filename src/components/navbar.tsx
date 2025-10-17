@@ -20,7 +20,7 @@ const navLinks: LinkType[] = [
   { name: 'Home', href: '#home', isMain: true },
   { name: 'Gallery', href: '#gallery', isMain: true },
   { name: 'Construction Drawings', href: '#drawings', isMain: true },
-  { name: 'Contact', href: '#contact', isMain: true },
+  { name: 'Contact', href: 'tel:YOUR-PHONE-NUMBER', isMain: true },
 ];
 
 const designServicesLinks: LinkType[] = [
@@ -82,7 +82,7 @@ const MobileDrawer = ({ isOpen, toggleMenu, mobileLinks }: MobileDrawerProps) =>
           className="mt-12 w-full text-center bg-amber-600 text-stone-900 text-2xl font-bold py-4 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest"
           onClick={toggleMenu}
         >
-          Book Appointment
+          Appointment
         </Link>
       </div>
     </div>
@@ -160,14 +160,14 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
           
           {/* Logo Section - The primary anchor */}
-          <a href="#" className="text-white leading-none flex flex-col group py-3 transition-all duration-300" aria-label="Design Alternatives Home">
+          <Link to={'/'} className="text-white leading-none flex flex-col group py-3 transition-all duration-300" aria-label="Design Alternatives Home">
             <div className={`italic font-serif tracking-tight transition-all duration-500 ${logoSizeClass}`} style={{ textShadow: '0 0 5px rgba(0,0,0,0.7)' }}>
               DesignHeaven
             </div>
             <div className={`text-xs uppercase tracking-[.4em] border-t border-b border-white border-opacity-70 py-0.5 mt-[-4px] group-hover:border-amber-400 transition-colors duration-500 ${isScrolled ? 'text-[10px]' : 'text-xs'}`}>
               KITCHEN & BATH DESIGN
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav Links & CTA */}
           <div className="hidden lg:flex items-center space-x-10">

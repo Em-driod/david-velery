@@ -105,8 +105,8 @@ const AppointmentPage: React.FC = () => {
                   id="project"
                   name="project"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border border-[#c2803f] rounded-lg 
+                             focus:outline-none focus:ring-2 focus:ring-[#e07000]"
                 >
                   <option value="">Select an option</option>
                   <option>Kitchen Remodel</option>

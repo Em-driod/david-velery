@@ -19,14 +19,14 @@ const Hero = () => {
         >
           
           {/* Main Heading - Added text-center to align text inside the box */}
-          <h1 className="text-white text-4xl md:text-5xl font-serif leading-tight mb-4 tracking-tight text-center" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}>
+          <h1 className="text-black text-4xl md:text-5xl font-serif leading-tight mb-4 tracking-tight text-center" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}>
             Tailored Design, <br />
             Seamless Navigation
             
           </h1>
           
           {/* Subheading/Body Text - Added text-center to align text inside the box */}
-          <p className="text-white text-xl md:text-2xl font-sans leading-relaxed text-center" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>
+          <p className="text-[#130e09] text-xl md:text-2xl font-sans leading-relaxed text-center" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>
             Inviting kitchens and interiors that look stunning today—and <br className="hidden sm:inline" />
             adapt gracefully as life changes.
           </p>

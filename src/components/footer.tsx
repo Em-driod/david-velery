@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
   const navLinks = [
@@ -27,14 +28,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Branding */}
           <div className="col-span-1 md:col-span-1 flex flex-col">
-            <a href="#home" className="text-white leading-none flex flex-col group py-3 transition-all duration-300" aria-label="Design Alternatives Home">
+            <Link to={'/'}  className="text-white leading-none flex flex-col group py-3 transition-all duration-300" aria-label="Design Alternatives Home">
               <div className="italic font-serif tracking-tight transition-all duration-500 text-4xl" style={{ textShadow: '0 0 5px rgba(0,0,0,0.7)' }}>
                 DesignHeaven
               </div>
               <div className="text-xs uppercase tracking-[.4em] border-t border-b border-white border-opacity-70 py-0.5 mt-[-4px] group-hover:border-amber-400 transition-colors duration-500 text-[10px]">
                 KITCHEN & BATH DESIGN
               </div>
-            </a>
+            </Link>
+            
             <p className="text-gray-400 mt-4 text-sm">
               Creating timeless spaces that reflect your personality and lifestyle.
             </p>
