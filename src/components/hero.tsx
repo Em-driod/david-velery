@@ -26,7 +26,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheading/Body Text - Added text-center to align text inside the box */}
-          <p className="text-[#130e09] text-xl md:text-2xl font-sans leading-relaxed text-center" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>
+          <p className="text-white text-xl md:text-2xl font-sans leading-relaxed text-center" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>
             Inviting kitchens and interiors that look stunning today—and <br className="hidden sm:inline" />
             adapt gracefully as life changes.
           </p>

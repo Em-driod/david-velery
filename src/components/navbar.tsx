@@ -12,7 +12,7 @@ interface LinkType {
 type MobileDrawerProps = {
   isOpen: boolean;
   toggleMenu: () => void;
-  mobileLinks: LinkType[];
+  // NOTE: mobileLinks is no longer needed as the component uses the data directly
 };
 
 // --- Data for navigation and dropdown ---
@@ -29,8 +29,8 @@ const designServicesLinks: LinkType[] = [
   { name: 'Aging in Place', href: '#aging-in-place', isMain: false },
 ];
 
-// --- Sub-Component: The Full-Screen Mobile Drawer ---
-const MobileDrawer = ({ isOpen, toggleMenu, mobileLinks }: MobileDrawerProps) => {
+// --- Sub-Component: The Full-Screen Mobile Drawer (UPDATED) ---
+const MobileDrawer = ({ isOpen, toggleMenu }: MobileDrawerProps) => {
   return (
     <div
       className={`fixed inset-0 z-50 transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
@@ -39,51 +39,61 @@ const MobileDrawer = ({ isOpen, toggleMenu, mobileLinks }: MobileDrawerProps) =>
         backdropFilter: 'blur(8px)',
       }}
     >
-      <div className="absolute top-0 right-0 p-8">
+      {/* Close Button */}
+      <div className="absolute top-0 right-0 p-6 sm:p-8">
         <button
           onClick={toggleMenu}
           className="text-amber-300 p-2 rounded-lg hover:bg-white/10 focus:outline-none transition-colors"
           aria-label="Close navigation menu"
         >
-          <FaTimes className="h-10 w-10" />
+          {/* Reduced size for a cleaner look */}
+          <FaTimes className="h-8 w-8 sm:h-10 sm:w-10" /> 
         </button>
       </div>
 
-      <div className="flex flex-col h-full items-start justify-center p-10 space-y-2">
-        {/* Main Links */}
-        {mobileLinks.filter(l => l.isMain).map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className="text-6xl text-white font-serif italic hover:text-amber-400 transition duration-400 leading-tight tracking-tighter"
-            onClick={toggleMenu}
-          >
-            {link.name}
-          </a>
-        ))}
+      {/* Content Container */}
+      <div className="flex flex-col h-full items-start justify-center p-8 sm:p-12 space-y-6">
         
-        {/* Sub-Links (Design Services) */}
-        <div className="pt-8 pl-4 space-y-1">
-          <div className="text-sm uppercase tracking-widest text-gray-400 pb-2 border-b border-gray-700">Design Services</div>
+        {/* Main Links (Refined typography and spacing) */}
+        <div className='flex flex-col space-y-1'>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.href}
+              className="text-5xl text-white font-serif italic hover:text-amber-400 transition duration-400 leading-snug tracking-tighter"
+              onClick={toggleMenu}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+        
+        {/* Sub-Links (Design Services) (Refined spacing and border) */}
+        <div className="pt-8 pl-0 space-y-2 w-full max-w-sm">
+          <div className="text-base uppercase tracking-widest text-gray-400 pb-3 border-b border-gray-700 font-sans font-medium">
+            Design Services
+          </div>
           {designServicesLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="block text-2xl text-gray-300 font-sans hover:text-amber-400 transition duration-300"
+              className="block text-xl text-gray-300 font-sans font-light pl-4 hover:text-amber-400 transition duration-300"
               onClick={toggleMenu}
             >
-              — {link.name}
+              {link.name}
             </a>
           ))}
         </div>
         
-        {/* CTA Button */}
-        <Link to={'/appointment'} 
-          className="mt-12 w-full text-center bg-amber-600 text-stone-900 text-2xl font-bold py-4 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest"
+        {/* CTA Button (Increased margin for separation) */}
+        {/* Using a regular anchor for a phone number link - a common mobile CTA */}
+        <a 
+          href="tel:07016969298"
+          className="mt-12 w-full max-w-sm text-center bg-amber-600 text-stone-900 text-xl font-bold py-4 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest"
           onClick={toggleMenu}
         >
-          Appointment
-        </Link>
+          Call for Appointment
+        </a>
       </div>
     </div>
   );
@@ -96,7 +106,6 @@ const Navbar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // Renamed 'isHovering' state to 'isNavHovering' for clarity within the component scope
   const [isNavHovering, setIsNavHovering] = useState(false); 
 
   // useRef with type for the dropdown wrapper div
@@ -107,8 +116,7 @@ const Navbar = () => {
   const toggleDropdown = useCallback(() => setIsDropdownOpen(prev => !prev), []);
   const closeDropdown = useCallback(() => setIsDropdownOpen(false), []);
   
-  // Combine all main links for the mobile drawer (Design Services are handled separately in the drawer component)
-  const allMobileLinks: LinkType[] = [...navLinks];
+  // NOTE: allMobileLinks is no longer needed for the Drawer, but keeping the original navLinks structure for desktop/data.
 
   // Effect 1: Handle scroll behavior (Fade and size change)
   useEffect(() => {
@@ -135,7 +143,7 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
   
-  // Dynamic Styles
+  // Dynamic Styles (No changes made to preserve desktop behavior)
   const bgColorClass = isScrolled || isNavHovering || isDropdownOpen 
     ? 'bg-stone-900/90 shadow-2xl backdrop-blur-sm' 
     : 'bg-black/70';
@@ -169,7 +177,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop Nav Links & CTA */}
+          {/* Desktop Nav Links & CTA (UNCHANGED) */}
           <div className="hidden lg:flex items-center space-x-10">
             
             {/* Design Services Dropdown - Minimalist and direct */}
@@ -215,12 +223,12 @@ const Navbar = () => {
           
             {/* CTA Button - Primary Focus */}
           <a
-  href="tel:07016969298"
-  className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105"
-  aria-label="Call to Book an Appointment"
->
-  Appointment
-</a>
+              href="tel:07016969298"
+              className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105"
+              aria-label="Call to Book an Appointment"
+            >
+              Appointment
+            </a>
 
           </div>
 
@@ -238,11 +246,11 @@ const Navbar = () => {
         </div>
       </nav>
       
-      {/* The Full-Screen Drawer Renders here */}
+      {/* The Full-Screen Drawer Renders here (UPDATED CALL) */}
       <MobileDrawer 
         isOpen={isMobileOpen} 
         toggleMenu={toggleMobileMenu} 
-        mobileLinks={allMobileLinks}
+        // NOTE: mobileLinks prop is removed from the call as the drawer imports data directly
       />
     </>
   );
