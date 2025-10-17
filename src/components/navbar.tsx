@@ -242,7 +242,7 @@ const Navbar = () => {
             {/* CTA */}
             <a
               href="tel:07016969298"
-              className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105"
+              className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl  uppercase tracking-widest transform hover:scale-105"
               aria-label="Call to Book an Appointment"
             >
               Appointment
