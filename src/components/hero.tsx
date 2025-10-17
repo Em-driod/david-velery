@@ -13,7 +13,7 @@ const Hero = () => {
         className="absolute inset-0 top-40 flex items-center justify-center p-auto sm:p-8 md:p-12 lg:p-20 pt-0 lg:pt-40"
       >
         <div 
-          className="max-w-2xl p-8 sm:p-10 md:p-12 text-center bg-black/10"
+          className="max-w-2xl p-8 sm:p-10 md:p-12 text-center bg-black/40"
           // Custom color and opacity for the overlay background
          
         >
