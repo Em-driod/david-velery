@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const Contact = () => {
   return (
@@ -21,7 +21,11 @@ const Contact = () => {
             </div>
             <div className="mb-4">
               <label htmlFor="message" className="block text-lg font-medium mb-2">Message</label>
-              <textarea id="message" className="w-full px-4 py-2 border rounded-lg" rows="5"></textarea>
+            <textarea 
+      id="message" 
+      className="w-full px-4 py-2 border rounded-lg" 
+      rows={5}
+    />
             </div>
             <button type="submit" className="bg-blue-500 text-white px-6 py-3 rounded-lg">Submit</button>
           </form>
