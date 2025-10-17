@@ -8,12 +8,14 @@ import Gallery from "./pages/gallery";
 import Construction from "./pages/construction";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 
 function App() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<About />} />

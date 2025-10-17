@@ -18,7 +18,7 @@ type MobileDrawerProps = {
 const navLinks: LinkType[] = [
   { name: 'Home', href: '/', isMain: true },
   { name: 'Gallery', href: '/gallery', isMain: true },
-  { name: 'Construction Drawings', href: '/construction', isMain: true },
+  { name: 'Construction Drawings', href: '/gallery', isMain: true },
   { name: 'Appointment', href: '/appointment', isMain: true }, // Keeping this as a main link
 ];
 

@@ -2,21 +2,23 @@
 
 const Gallery = () => {
   const images = [
-    '/barn.png',
-    '/bath.png',
-    '/coffe.jpg',
+    '/hert.png',
+    
+    '/a01.png',
+    '/a02.png',
+    '/a04.png',
     '/dev1.png',
     '/dev2.png',
     '/dom3.png',
     '/fahja.png',
-    '/habitat.png',
+    
     '/hert.png',
     '/logo 1.png',
     '/med.png',
     '/mortal.jpg',
     '/nit1.png',
-    '/susan.png',
-    '/very.png',
+    '/barn.png',
+    '/bath.png',
   ];
 
   return (
