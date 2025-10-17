@@ -1,4 +1,3 @@
-// src/pages/AppointmentPage.tsx
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -61,7 +60,7 @@ const AppointmentPage: React.FC = () => {
                   name="name"
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </motion.div>
 
@@ -84,7 +83,7 @@ const AppointmentPage: React.FC = () => {
                   name="email"
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </motion.div>
 
@@ -106,7 +105,7 @@ const AppointmentPage: React.FC = () => {
                   name="project"
                   required
                   className="w-full px-4 py-3 border border-[#c2803f] rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-[#e07000]"
+                               focus:outline-none focus:ring-2 focus:ring-[#e07000]"
                 >
                   <option value="">Select an option</option>
                   <option>Kitchen Remodel</option>
@@ -135,7 +134,7 @@ const AppointmentPage: React.FC = () => {
                   rows={4}
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               focus:outline-none focus:ring-2 focus:ring-blue-500"
                 ></textarea>
               </motion.div>
 
@@ -148,7 +147,7 @@ const AppointmentPage: React.FC = () => {
                 <button
                   type="submit"
                   className="bg-[#e07000] text-white font-bold py-3 px-8 rounded-full 
-                             transition duration-300 hover:bg-blue-600 shadow-lg"
+                               transition duration-300 hover:bg-blue-600 shadow-lg"
                 >
                   Send Message
                 </button>

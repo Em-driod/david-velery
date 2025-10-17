@@ -9,7 +9,6 @@ import Global from "../components/global"
 const LandingPage = () => {
   return (
     <div>
-      
       <Hero />
       <Section1 />
       <Service />
@@ -17,7 +16,6 @@ const LandingPage = () => {
       <Appointment />
       <Proven />
       <Global />
-     
     </div>
   )
 }

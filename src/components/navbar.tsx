@@ -17,10 +17,10 @@ type MobileDrawerProps = {
 
 // --- Data for navigation and dropdown ---
 const navLinks: LinkType[] = [
-  { name: 'Home', href: '#home', isMain: true },
-  { name: 'Gallery', href: '#gallery', isMain: true },
-  { name: 'Construction Drawings', href: '#drawings', isMain: true },
-  { name: 'Contact', href: 'tel:YOUR-PHONE-NUMBER', isMain: true },
+  { name: 'Home', href: '/', isMain: true },
+  { name: 'Gallery', href: '/gallary', isMain: true },
+  { name: 'Construction Drawings', href: '/construction', isMain: true },
+  { name: 'Contact', href: '/appointment', isMain: true },
 ];
 
 const designServicesLinks: LinkType[] = [
@@ -214,13 +214,14 @@ const Navbar = () => {
             ))}
           
             {/* CTA Button - Primary Focus */}
-            <Link
-              to={'/appointment'}
-              className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105"
-              aria-label="Book an Appointment"
-            >
-              Appointment
-            </Link>
+          <a
+  href="tel:07016969298"
+  className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105"
+  aria-label="Call to Book an Appointment"
+>
+  Appointment
+</a>
+
           </div>
 
           {/* Mobile Menu Button - The only visible element on mobile */}
