@@ -19,7 +19,7 @@ const navLinks: LinkType[] = [
   { name: 'Home', href: '/', isMain: true },
   { name: 'Gallery', href: '/gallery', isMain: true },
   { name: 'Construction Drawings', href: '/construction', isMain: true },
-  { name: 'Appointment', href: '/appointment', isMain: true },
+  { name: 'Appointment', href: '/appointment', isMain: true }, // Keeping this as a main link
 ];
 
 const designServicesLinks: LinkType[] = [
@@ -104,16 +104,16 @@ const MobileDrawer = ({ isOpen, toggleMenu }: MobileDrawerProps) => {
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="pt-6">
-          <a
-            href="tel:07016969298"
-            onClick={toggleMenu}
-            className="block mx-auto w-full max-w-xs bg-amber-600 text-stone-900 text-lg font-bold py-3.5 rounded-full transition duration-300 hover:bg-amber-500 shadow-lg uppercase tracking-widest transform hover:scale-105"
-          >
-             Appointment
-          </a>
-        </div>
+        {/* CTA (Updated to be a Link to the Appointment page) */}
+        {/* We use <Link> here since it is for an internal route */}
+        <Link 
+          to="/appointment" 
+          onClick={toggleMenu}
+          className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105 text-center"
+          aria-label="Go to Appointment Booking Page"
+        >
+          Book Now
+        </Link>
       </div>
     </div>
   );
@@ -163,6 +163,10 @@ const Navbar = () => {
     (isScrolled || isNavHovering || isDropdownOpen
       ? 'text-white hover:text-amber-400'
       : 'text-white hover:text-white');
+  
+  // Filter out the 'Appointment' link from the main navLinks for the desktop view
+  // since we have a dedicated CTA button for it.
+  const desktopNavLinks = navLinks.filter(link => link.name !== 'Appointment');
 
   return (
     <>
@@ -232,21 +236,21 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Other Links */}
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className={navLinkStyle}>
+            {/* Other Links (excluding Appointment) */}
+            {desktopNavLinks.map((link) => (
+              <Link key={link.name} to={link.href} className={navLinkStyle}>
                 {link.name}
-              </a>
+              </Link>
             ))}
 
-            {/* CTA */}
-            <a
-              href="tel:07016969298"
-              className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl  uppercase tracking-widest transform hover:scale-105"
-              aria-label="Call to Book an Appointment"
+            {/* CTA (Updated to link to the Appointment page) */}
+            <Link
+              to="/appointment"
+              className="bg-amber-600 text-stone-900 text-sm font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-amber-500 shadow-xl uppercase tracking-widest transform hover:scale-105"
+              aria-label="Go to Appointment Booking Page"
             >
               Appointment
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
