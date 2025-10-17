@@ -10,10 +10,10 @@ const Gallery = () => {
     '/dev1.png',
     '/dev2.png',
     '/dom3.png',
-    '/fahja.png',
+    
     
     '/hert.png',
-    '/logo 1.png',
+   
     '/med.png',
     '/mortal.jpg',
     '/nit1.png',
