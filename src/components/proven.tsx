@@ -126,7 +126,7 @@ const ProvenProcess: React.FC = () => {
       title: "Book an Appointment",
       description:
         "Let’s schedule your first consultation to discuss your goals, preferences, and budget. Your dream design starts here!",
-      link: "tel:07016969298",
+      link: "tel:307 462 9173",
     },
     {
       emoji: "🎨",

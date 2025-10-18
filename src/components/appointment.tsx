@@ -36,7 +36,7 @@ const Appointment: React.FC = () => {
   ];
 
   const imageUrl = "/med.png";
-  const phoneNumber = "tel:07016969298";
+  const phoneNumber = "tel:307 462 9173";
 
   return (
     <section

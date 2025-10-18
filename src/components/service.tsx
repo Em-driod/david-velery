@@ -1,5 +1,7 @@
 // src/components/Service.tsx
 
+import { Link } from "react-router-dom";
+
 const services = [
   {
     img: "/dev1.png", // kitchen image
@@ -54,9 +56,11 @@ const Service = () => {
               <p className="text-gray-700 mb-8 text-[16px] leading-relaxed">
                 {service.desc}
               </p>
+              <Link to={'/detail'} >
               <button className="bg-[#1b2a3b] text-white text-sm font-medium py-3 px-7 rounded-full hover:bg-[#293a4b] transition">
                 LEARN MORE
               </button>
+              </Link>
             </div>
           </div>
         ))}

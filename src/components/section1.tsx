@@ -22,7 +22,7 @@ const Section1 = () => {
           <div className="flex flex-col items-center bg-[#232A35] rounded-2xl p-6 md:p-8 shadow-[0_4px_25px_rgba(0,0,0,0.25)] hover:shadow-[0_6px_30px_rgba(255,191,0,0.25)] transition-all duration-500 transform hover:-translate-y-2">
             <div className="w-full max-w-xs overflow-hidden mb-6 rounded-xl">
               <img
-                src="susan.png"
+                src="pablo.jpg"
                 alt="Certified Kitchen Bath Designer"
                 className="w-full h-auto object-cover rounded-xl transition-transform duration-500 hover:scale-105"
               />

@@ -9,6 +9,7 @@ import Construction from "./pages/construction";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/ScrollToTop";
+import DetailPage from "./pages/detail";
 import "./App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/appointment" element={<AppointmentPage />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/construction" element={<Construction />} />
+        <Route path="/detail" element={<DetailPage />} />
       </Routes>
       <Footer />
     </>
