@@ -111,7 +111,8 @@ const Contact: React.FC = () => {
               and 3D model previews of your dream home.
             </p>
             <p className="text-sm leading-relaxed">
-              📍 1528 Silver Birch Avenue, Austin, Texas, 78704, USA 
+              📍  600 Dewar Dr, Rock Springs, WY 82901
+
               <br />
               📞 +307 462 9173
               <br />

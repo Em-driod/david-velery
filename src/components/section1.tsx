@@ -31,7 +31,7 @@ const Section1 = () => {
               Certified Kitchen Bath Designer
             </h3>
             <p className="text-gray-300 text-base md:text-lg font-light leading-relaxed">
-              Susan Benedict, CMKBD, translates 20 years of experience into
+              Charles Bennett, CMKBD, translates 20 years of experience into
               effortless floor plans and extraordinary design details.
             </p>
           </div>

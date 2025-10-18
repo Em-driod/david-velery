@@ -74,7 +74,8 @@ const Footer = () => {
           <div className="col-span-1">
             <h3 className="text-lg font-semibold uppercase tracking-wider text-amber-400">Contact Us</h3>
             <div className="mt-4 space-y-2 text-gray-300">
-              <p>123 DesignHeaven, Suite 456</p>
+              <p> 600 Dewar Dr, Rock Springs, WY 82901
+</p>
               <p>Creativity City, USA 78901</p>
               <p>
                 <a href="mailto:contact@designalternatives.com" className="hover:text-amber-400">
@@ -98,7 +99,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Design Alternatives. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DesignHeaven. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
