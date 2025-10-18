@@ -11,7 +11,7 @@ const DetailPage: React.FC = () => {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
+          <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg mt-5">
             Modern House Design Excellence
           </h1>
           <p className="mt-4 text-gray-200 text-lg md:text-xl max-w-2xl mx-auto">
