@@ -3,7 +3,7 @@ import React from "react";
 
 const DetailPage: React.FC = () => {
   return (
-    <div className="bg-gray-50 min-h-screen font-sans mt-6 lg:mt-6 sm:mt-20">
+    <div className="bg-gray-50 min-h-screen font-sans mt-8 lg:mt-6 sm:mt-24">
       {/* Hero Section */}
       <header
         className="relative bg-cover bg-center h-[60vh] flex items-center justify-center"

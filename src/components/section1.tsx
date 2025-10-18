@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const Section1 = () => {
   return (
@@ -75,14 +75,16 @@ const Section1 = () => {
 
         {/* CTA Button */}
         <div className="text-center mt-20">
+          <Link to={'/contact'}>
           <button
             className="relative overflow-hidden text-[#1B1F27] bg-amber-500 text-lg md:text-xl font-semibold py-4 px-10 rounded-full shadow-xl tracking-wide 
             transition-all duration-500 hover:shadow-[0_0_20px_rgba(255,193,7,0.5)] hover:bg-amber-400"
             aria-label="Discover Your Alternatives"
-          >
+            >
             <span className="relative z-10">Discover Your Alternatives</span>
             <span className="absolute inset-0 bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 opacity-0 hover:opacity-100 transition-opacity duration-500"></span>
           </button>
+            </Link>
         </div>
       </div>
     </section>

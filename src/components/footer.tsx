@@ -74,16 +74,16 @@ const Footer = () => {
           <div className="col-span-1">
             <h3 className="text-lg font-semibold uppercase tracking-wider text-amber-400">Contact Us</h3>
             <div className="mt-4 space-y-2 text-gray-300">
-              <p>123 Design Street, Suite 456</p>
+              <p>123 DesignHeaven, Suite 456</p>
               <p>Creativity City, USA 78901</p>
               <p>
                 <a href="mailto:contact@designalternatives.com" className="hover:text-amber-400">
-                  contact@designalternatives.com
+                  contact@DesignHeaven.com
                 </a>
               </p>
               <p>
-                <a href="tel:+1234567890" className="hover:text-amber-400">
-                  (123) 456-7890
+                <a href="tel:+307 462 9173" className="hover:text-amber-400">
+                  (307) 462 9173
                 </a>
               </p>
             </div>
