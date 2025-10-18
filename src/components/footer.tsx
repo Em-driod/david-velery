@@ -74,9 +74,9 @@ const Footer = () => {
           <div className="col-span-1">
             <h3 className="text-lg font-semibold uppercase tracking-wider text-amber-400">Contact Us</h3>
             <div className="mt-4 space-y-2 text-gray-300">
-              <p> 600 Dewar Dr, Rock Springs, WY 82901
+              <p> 600 Dewar Dr, Rock Springs, WY 82901, USA
 </p>
-              <p>Creativity City, USA 78901</p>
+              
               <p>
                 <a href="mailto:contact@designalternatives.com" className="hover:text-amber-400">
                   contact@DesignHeaven.com
