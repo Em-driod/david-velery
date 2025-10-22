@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-{/*import LandingPage from "./pages/landingPage";*/}
+import LandingPage from "./pages/landingPage";
 import About from "./pages/about";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
@@ -18,8 +18,8 @@ function App() {
       <Navbar />
       <ScrollToTop />
       <Routes>
-       {/* Project Select 
-        <Route path="/" element={<LandingPage />} />*/}
+        
+        <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
